@@ -31,12 +31,12 @@ import se.mediaserver.tutorial.util.URI;
 public class GetPlayerJerseyClient {
 
     public static void main(String args[]) throws UniformInterfaceException {
-        
+
 
         GetPlayerJerseyClient client1 = new GetPlayerJerseyClient();
-       // client1.remove("3");
-       //  client1.update();
-        
+        // client1.remove("3");
+        //  client1.update();
+
         ClientResponse response = client1.findAll_XML(ClientResponse.class);
 
 
@@ -72,18 +72,13 @@ public class GetPlayerJerseyClient {
         player.setJerseynumber(101);
         player.setLastspokenwords(" I will be retiring soon -updated");
         client1.edit_XML(player);
-        
-        
-    }
 
+
+    }
     private WebResource webResource;
 
-    private Client client;
-
     public GetPlayerJerseyClient() {
-        com.sun.jersey.api.client.config.ClientConfig config = new com.sun.jersey.api.client.config.DefaultClientConfig();
-        client = Client.create(config);
-        webResource = client.resource(URI.BASE_URI).path("com.playerentity.player");
+        webResource = URI.getWebResource();
     }
 
     public void remove(String id) throws UniformInterfaceException {
@@ -146,7 +141,7 @@ public class GetPlayerJerseyClient {
         return resource.accept(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public void close() {
-        client.destroy();
-    }
+//    public void close() {
+//        client.destroy();
+//    }
 }

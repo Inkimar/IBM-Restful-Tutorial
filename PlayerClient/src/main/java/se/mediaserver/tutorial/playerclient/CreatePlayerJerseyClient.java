@@ -43,9 +43,9 @@ public class CreatePlayerJerseyClient {
 //        data = (response.getEntity(genericType));
 
         Player player = new Player();
-        player.setId(39); // 
-        player.setFirstname("Gissur");
-        player.setLastname("Erlingsson");
+        player.setId(109); // 
+        player.setFirstname("Frank");
+        player.setLastname("Andersson");
         player.setJerseynumber(66);
         player.setLastspokenwords("tack takk");
         client1.create_XML(player);
@@ -53,12 +53,8 @@ public class CreatePlayerJerseyClient {
 
     private WebResource webResource;
 
-    private Client client;
-
     public CreatePlayerJerseyClient() {
-        ClientConfig config = new DefaultClientConfig();
-        client = Client.create(config);
-        webResource = client.resource(URI.BASE_URI).path("com.playerentity.player");
+        webResource = URI.getWebResource();
     }
 
     public void remove(String id) throws UniformInterfaceException {
@@ -121,7 +117,7 @@ public class CreatePlayerJerseyClient {
         return resource.accept(MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public void close() {
-        client.destroy();
-    }
+//    public void close() {
+//        client.destroy();
+//    }
 }
