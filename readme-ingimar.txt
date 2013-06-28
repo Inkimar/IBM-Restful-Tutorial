@@ -18,13 +18,12 @@ check
 - - - That domain-project could be project-C ( that project-A and project-B depends on , using archiva
 as a maven-repository )
 
-Kan köra -> http://localhost:8080/Playerserver/webresources/com.playerentity.player
-borde ändra @Path från com.playerentity.player till endast player - Lyckas inte ...
 
-http://localhost:8080/Playerserver/webresources/com.playerentity.player/count
+
 
 not-working
 (2) The Client : OBS - får inte auto_increment att fungera ...
+Lösning : Generera ett GUID såsom PK ? ( Samma namna på image-filen ? )
 
 Setting the ID manually for the Player, though that PLAYER-tbl is updated with incremental .... ?
 CREATE TABLE `PLAYER` (
