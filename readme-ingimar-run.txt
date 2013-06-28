@@ -3,6 +3,15 @@ borde ändra @Path från com.playerentity.player till endast player - Lyckas int
 
 http://localhost:8080/Playerserver/webresources/com.playerentity.player/count
 
+Hämtar ...
+Runs the following :
+ @GET
+    @Override
+    @Produces({"application/xml", "application/json"})
+    public List<Player> findAll() {
+        return super.findAll();
+    }
+
 Kan även köra : Snyggt: Antingen xml eller json ....
  curl -H "Accept:application/xml" http://localhost:8080/Playerserver/webresources/com.playerentity.player
  curl -H "Accept:application/json" http://localhost:8080/Playerserver/webresources/com.playerentity.player
