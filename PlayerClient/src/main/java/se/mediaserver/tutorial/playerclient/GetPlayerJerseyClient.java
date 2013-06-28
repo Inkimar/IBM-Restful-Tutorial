@@ -13,6 +13,7 @@ import java.util.List;
 import com.playerentity.Player;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
+import se.mediaserver.tutorial.util.URI;
 
 /**
  * Jersey REST client generated for REST resource:PlayerFacadeREST
@@ -79,12 +80,10 @@ public class GetPlayerJerseyClient {
 
     private Client client;
 
-    private static final String BASE_URI = "http://localhost:8080/Playerserver/webresources";
-
     public GetPlayerJerseyClient() {
         com.sun.jersey.api.client.config.ClientConfig config = new com.sun.jersey.api.client.config.DefaultClientConfig();
         client = Client.create(config);
-        webResource = client.resource(BASE_URI).path("com.playerentity.player");
+        webResource = client.resource(URI.BASE_URI).path("com.playerentity.player");
     }
 
     public void remove(String id) throws UniformInterfaceException {

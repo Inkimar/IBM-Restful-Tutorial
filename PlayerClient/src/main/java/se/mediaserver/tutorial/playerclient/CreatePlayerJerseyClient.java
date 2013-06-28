@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 import com.playerentity.Player;
+import se.mediaserver.tutorial.util.URI;
 
 /**
  * Jersey REST client generated for REST resource:PlayerFacadeREST
@@ -42,11 +43,11 @@ public class CreatePlayerJerseyClient {
 //        data = (response.getEntity(genericType));
 
         Player player = new Player();
-        player.setId(33);
-        player.setFirstname("Helena");
+         player.setId(39); // 
+        player.setFirstname("Gissur");
         player.setLastname("Erlingsson");
-        player.setJerseynumber(60);
-        player.setLastspokenwords("Thanks to my fans");
+        player.setJerseynumber(66);
+        player.setLastspokenwords("tack takk");
         client1.create_XML(player);
     }
 
@@ -54,12 +55,10 @@ public class CreatePlayerJerseyClient {
 
     private Client client;
 
-    private static final String BASE_URI = "http://localhost:8080/Playerserver/webresources";
-
     public CreatePlayerJerseyClient() {
         ClientConfig config = new DefaultClientConfig();
         client = Client.create(config);
-       webResource = client.resource(BASE_URI).path("com.playerentity.player");
+       webResource = client.resource(URI.BASE_URI).path("com.playerentity.player");
        // webResource = client.resource(BASE_URI).path("playerentities.player");
     }
 

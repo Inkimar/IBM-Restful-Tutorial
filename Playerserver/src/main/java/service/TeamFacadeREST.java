@@ -25,7 +25,8 @@ import com.playerentity.Team;
 @Stateless
 @Path("com.playerentity.team")
 public class TeamFacadeREST extends AbstractFacade<Team> {
-    @PersistenceContext(unitName = "se.mediaserver.jboss_Playerserver_war_1.0-SNAPSHOTPU")
+    //@PersistenceContext(unitName = "se.mediaserver.jboss_Playerserver_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "PLAYER-PU")
     private EntityManager em;
 
     public TeamFacadeREST() {

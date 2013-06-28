@@ -25,7 +25,8 @@ import com.playerentity.Player;
 @Stateless
 @Path("com.playerentity.player")
 public class PlayerFacadeREST extends AbstractFacade<Player> {
-    @PersistenceContext(unitName = "se.mediaserver.jboss_Playerserver_war_1.0-SNAPSHOTPU")
+   // @PersistenceContext(unitName = "se.mediaserver.jboss_Playerserver_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "PLAYER-PU")
     private EntityManager em;
 
     public PlayerFacadeREST() {

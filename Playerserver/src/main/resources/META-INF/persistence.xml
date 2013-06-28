@@ -5,7 +5,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>-->
-  <persistence-unit name="se.mediaserver.jboss_Playerserver_war_1.0-SNAPSHOTPU" transaction-type="JTA">
+  <persistence-unit name="PLAYER-PU" transaction-type="JTA">
     <jta-data-source>jdbc/__mysqlIbmTutorial</jta-data-source>
     <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
     <properties/>
