@@ -10,7 +10,7 @@ ejb is used.
 - see the tutorial for creating a Derby ( Here it is db=john with psw=john )
 - - or you could create a mysql-database, remember to create a jdbc-jndi within glassfish ( or any other as ).
 
-
+check
 (1) Architectural - thing
 - now there are 2 projects ( project-A and project-B )
 - - each of the projects contains a domain-model ( Player & Team )
@@ -19,7 +19,9 @@ ejb is used.
 as a maven-repository )
 
 
-(2) The Client :
+not-working
+(2) The Client : OBS - får inte auto_increment att fungera ...
+
 Setting the ID manually for the Player, though that PLAYER-tbl is updated with incremental .... ?
 CREATE TABLE `PLAYER` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,4 +40,9 @@ But i Cannot remove the  player.setId(36); - which should be able if the db auto
         player.setJerseynumber(66);
         player.setLastspokenwords("Thanks to my fans");
         client1.create_XML(player);
+
+Step-by-step:
+0) Works with a J2SE-Client
+1) Testing with WEB-Client.
+
 

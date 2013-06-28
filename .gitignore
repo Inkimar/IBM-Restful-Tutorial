@@ -6,3 +6,5 @@
 *.ear
 /PlayerClient/target/
 /Playerserver/target/
+/PlayerWebClient/target/
+/PlayerWebClient/nbproject/private/
