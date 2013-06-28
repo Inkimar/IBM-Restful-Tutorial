@@ -18,6 +18,10 @@ check
 - - - That domain-project could be project-C ( that project-A and project-B depends on , using archiva
 as a maven-repository )
 
+Kan köra -> http://localhost:8080/Playerserver/webresources/com.playerentity.player
+borde ändra @Path från com.playerentity.player till endast player - Lyckas inte ...
+
+http://localhost:8080/Playerserver/webresources/com.playerentity.player/count
 
 not-working
 (2) The Client : OBS - får inte auto_increment att fungera ...
@@ -40,6 +44,7 @@ But i Cannot remove the  player.setId(36); - which should be able if the db auto
         player.setJerseynumber(66);
         player.setLastspokenwords("Thanks to my fans");
         client1.create_XML(player);
+
 
 Step-by-step:
 0) Works with a J2SE-Client
