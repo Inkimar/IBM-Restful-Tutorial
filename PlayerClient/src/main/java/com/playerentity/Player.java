@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.playerentity;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ingimar
  */
 @Entity
-@Table(name = "PLAYER", catalog = "", schema = "JOHN")
+@Table(name = "PLAYER")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Player.findAll", query = "SELECT p FROM Player p"),
@@ -32,24 +29,39 @@ public class Player implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Basic(optional = false)
+    //@Id
+   // @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "LASTNAME")
+    @Column(name = "LAST_NAME")
     private String lastname;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "FIRST_NAME")
     private String firstname;
 
-    @Column(name = "JERSEYNUMBER")
+    @Column(name = "JERSEY_NUMBER")
     private Integer jerseynumber;
 
-    @Column(name = "LASTSPOKENWORDS")
+    @Column(name = "LAST_SPOKEN_WORDS")
     private String lastspokenwords;
+    
+    @Id
+    @Basic(optional = false)
+//    @NotNull
+    @Column(name = "TESTING_UUID")
+    private String testingUUID;
 
     public Player() {
+        this.testingUUID = UUID.randomUUID().toString();
+    }
+
+    public String getTestingUUID() {
+        return testingUUID;
+    }
+
+    public void setTestingUUID(String testingUUID) {
+        this.testingUUID = testingUUID;
     }
 
     public Player(Integer id) {
@@ -118,7 +130,6 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "se.mediaserver.tutorial.playerentities.Player[ id=" + id + " ]";
+        return "com.playerentity.Player[ id=" + id + " ]";
     }
-    
 }

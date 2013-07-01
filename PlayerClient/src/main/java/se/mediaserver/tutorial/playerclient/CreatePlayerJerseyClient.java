@@ -2,30 +2,13 @@ package se.mediaserver.tutorial.playerclient;
 
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.GenericType;
 import java.text.MessageFormat;
 import javax.ws.rs.core.MediaType;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.playerentity.Player;
 import se.mediaserver.tutorial.util.URI;
 
 /**
- * Jersey REST client generated for REST resource:PlayerFacadeREST
- * [com.playerentity.player]<br>
- * USAGE:
- * <pre>
- *        CreatePlayerJerseyClient client = new CreatePlayerJerseyClient();
- *        Object response = client.XXX(...);
- *        // do whatever with response
- *        client.close();
- * </pre>
- *
  * @author ingimar
  */
 public class CreatePlayerJerseyClient {
@@ -33,21 +16,12 @@ public class CreatePlayerJerseyClient {
     public static void main(String args[]) throws UniformInterfaceException {
 
         CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
-        ClientResponse response = client1.findAll_XML(ClientResponse.class);
-
-        GenericType<List<Player>> genericType = new GenericType<List<Player>>() {
-        };
-
-        // Returns an ArrayList of Players from the web service
-        List<Player> data = new ArrayList<>();
-//        data = (response.getEntity(genericType));
 
         Player player = new Player();
-        player.setId(109); // 
-        player.setFirstname("Frank");
+        player.setFirstname("Marie");
         player.setLastname("Andersson");
         player.setJerseynumber(66);
-        player.setLastspokenwords("tack takk");
+        player.setLastspokenwords("THANKS");
         client1.create_XML(player);
     }
 
