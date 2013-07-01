@@ -50,7 +50,7 @@ public class CreatePlayer extends HttpServlet {
     private Player createPlayer() {
         
         Player player = new Player();
-        player.setFirstname("Helena");
+        player.setFirstname("Ingimar");
         player.setLastname("E-son");
         player.setJerseynumber(66);
         player.setLastspokenwords("gson");
