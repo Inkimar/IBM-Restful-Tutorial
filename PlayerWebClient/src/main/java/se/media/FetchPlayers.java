@@ -52,7 +52,7 @@ public class FetchPlayers extends HttpServlet {
         }
     }
     
-    private WebResource webResource;
+    //private WebResource webResource;
 
     private List<Player> getAllPlayers() {
         ClientResponse response = findAll_XML(com.sun.jersey.api.client.ClientResponse.class);

@@ -4,6 +4,9 @@
  */
 package se.media;
 
+import com.playerentity.Player;
+import com.sun.jersey.api.client.UniformInterfaceException;
+import com.sun.jersey.api.client.WebResource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
+import se.mediaserver.tutorial.util.URI;
 
 /**
  *
@@ -23,23 +28,43 @@ public class CreatePlayer extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        Player player = createPlayer();
+        
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CreatePlayer</title>");            
+            out.println("<title>Servlet CreatePlayer</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CreatePlayer at " + request.getContextPath() + "</h1>");
+            out.println("<h1>is the player created ? " + player  + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
+        } finally {
             out.close();
         }
     }
 
+    private Player createPlayer() {
+        
+        Player player = new Player();
+        player.setFirstname("Helena");
+        player.setLastname("E-son");
+        player.setJerseynumber(66);
+        player.setLastspokenwords("gson");
+        create_XML(player);
+        
+        return player;
+    }
+
+    public void create_XML(Object requestEntity) throws UniformInterfaceException {
+        WebResource resource = URI.getWebResource();
+        resource.type(MediaType.APPLICATION_XML).post(requestEntity);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP
      * <code>GET</code> method.
