@@ -48,7 +48,6 @@ public class GetPlayerJerseyClient {
         System.out.println("Retreiving and Displaying Players Details");
         for (Player players : data) {
             System.out.println("FirstName: " + players.getFirstname());
-            System.out.println("PlayerID: " + players.getId());
             System.out.println(" Jerseyno: " + players.getJerseynumber());
             System.out.println("LastName: " + players.getLastname());
             System.out.println("Last Spoken Words:" + players.getLastspokenwords());
@@ -63,7 +62,6 @@ public class GetPlayerJerseyClient {
         };
         Player player = response1.getEntity(genericType);
         System.out.println("FirstName: " + player.getFirstname());
-        System.out.println("PlayerID: " + player.getId());
         System.out.println(" Jerseyno: " + player.getJerseynumber());
         System.out.println("LastName: " + player.getLastname());
         System.out.println("Last Spoken Words: " + player.getLastspokenwords());
