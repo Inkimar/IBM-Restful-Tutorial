@@ -6,6 +6,7 @@ import junit.framework.TestSuite;
 
 /**
  * Unit test for simple App.
+ * klockan 13:55
  */
 public class AppTest 
     extends TestCase
