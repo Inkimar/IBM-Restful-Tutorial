@@ -7,3 +7,10 @@
     </jdbc-connection-pool>
     <jdbc-resource pool-name="mysql_ibm_tutorial" description="" jndi-name="jdbc/__mysqlIbmTutorial"></jdbc-resource>
   </resources>
+
+<servers>
+    <server name="server" config-ref="server-config">
+      <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
+      <resource-ref ref="jdbc/__mysqlIbmTutorial"></resource-ref>
+    </server>
+  </servers>
