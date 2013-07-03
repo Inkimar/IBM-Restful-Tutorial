@@ -2,79 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package se.mediaserver.tutorial.playerclient;
+package se.mediaserver.tutorial.util;
 
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 
-import java.util.ArrayList;
-import java.util.List;
-import com.playerentity.Player;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.GenericType;
-import se.mediaserver.tutorial.util.URI;
-
 /**
- * Jersey REST client generated for REST resource:PlayerFacadeREST
- * [com.playerentity.player]<br>
- * USAGE:
- * <pre>
- *        GetPlayerJerseyClient client = new GetPlayerJerseyClient();
- *        Object response = client.XXX(...);
- *        // do whatever with response
- *        client.close();
- * </pre>
  *
  * @author ingimar
  */
-public class GetPlayerJerseyClient {
+public class Restful {
 
-    public static void main(String args[]) throws UniformInterfaceException {
-
-
-        GetPlayerJerseyClient client1 = new GetPlayerJerseyClient();
-        // client1.remove("3");
-        //  client1.update();
-
-        ClientResponse response = client1.findAll_XML(ClientResponse.class);
-
-
-        GenericType<List<Player>> genericType = new GenericType<List<Player>>() {
-        };
-
-        // Returns an ArrayList of Players from the web service
-        List<Player> data = new ArrayList<Player>();
-        data = (response.getEntity(genericType));
-        System.out.println("Retreiving and Displaying Players Details");
-        for (Player players : data) {
-            System.out.println("FirstName: " + players.getFirstname());
-            System.out.println(" Jerseyno: " + players.getJerseynumber());
-            System.out.println("LastName: " + players.getLastname());
-            System.out.println("Last Spoken Words:" + players.getLastspokenwords());
-        }
-
-    }
-
-    private void update() {
-        CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
-        ClientResponse response1 = client1.find_XML(ClientResponse.class, "3");
-        GenericType<Player> genericType = new GenericType<Player>() {
-        };
-        Player player = response1.getEntity(genericType);
-        System.out.println("FirstName: " + player.getFirstname());
-        System.out.println(" Jerseyno: " + player.getJerseynumber());
-        System.out.println("LastName: " + player.getLastname());
-        System.out.println("Last Spoken Words: " + player.getLastspokenwords());
-
-        player.setJerseynumber(101);
-        player.setLastspokenwords(" I will be retiring soon -updated");
-        client1.edit_XML(player);
-
-
-    }
     private WebResource webResource;
 
-    public GetPlayerJerseyClient() {
+    public Restful() {
         webResource = URI.getWebResource();
     }
 
@@ -137,8 +78,4 @@ public class GetPlayerJerseyClient {
         resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{id}));
         return resource.accept(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-
-//    public void close() {
-//        client.destroy();
-//    }
 }

@@ -6,6 +6,11 @@ import java.text.MessageFormat;
 import javax.ws.rs.core.MediaType;
 
 import com.playerentity.Player;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
+import java.util.ArrayList;
+import java.util.List;
+import se.mediaserver.tutorial.util.Restful;
 import se.mediaserver.tutorial.util.URI;
 
 /**
@@ -14,84 +19,66 @@ import se.mediaserver.tutorial.util.URI;
 public class CreatePlayerJerseyClient {
 
     public static void main(String args[]) throws UniformInterfaceException {
+        //createPlayer();
+        //get();
+        update();
 
-        CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
+    }
+
+    private static void createPlayer() throws UniformInterfaceException {
+        Restful restful = new Restful();
 
         Player player = new Player();
-        player.setFirstname("Marie");
-        player.setLastname("Andersson");
-        player.setJerseynumber(66);
-        player.setLastspokenwords("THANKS");
-        client1.create_XML(player);
+        player.setFirstname("Sabba");
+        player.setLastname("Tabba");
+        player.setJerseynumber(51);
+        player.setLastspokenwords("varsågod");
+        restful.create_XML(player);
     }
 
-    private WebResource webResource;
+    private static void get() {
 
-    public CreatePlayerJerseyClient() {
-        webResource = URI.getWebResource();
+        Restful restful = new Restful();
+        ClientResponse response = restful.findAll_XML(ClientResponse.class);
+
+        GenericType<List<Player>> genericType = new GenericType<List<Player>>() {
+        };
+
+        // Returns an ArrayList of Players from the web service
+        List<Player> data = new ArrayList<Player>();
+        data = (response.getEntity(genericType));
+        System.out.println("Retreiving and Displaying Players Details");
+        for (Player players : data) {
+            System.out.println("FirstName: " + players.getFirstname());
+            System.out.println(" Jerseyno: " + players.getJerseynumber());
+            System.out.println("LastName: " + players.getLastname());
+            System.out.println("Last Spoken Words:" + players.getLastspokenwords());
+        }
     }
+    
+    /**
+     * 2013-07-03: Får fel här
+     */
+    private  static void update() {
+        Restful restful = new Restful();
 
-    public void remove(String id) throws UniformInterfaceException {
-        webResource.path(MessageFormat.format("{0}", new Object[]{id})).delete();
+        ClientResponse response = restful.find_XML(ClientResponse.class, "faea868e-b7a5-4d03-b323-fbed50621ab3");
+        if ( response == null ){
+            System.out.println("it is null");
+        }
+
+//        CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
+//        ClientResponse response1 = client1.find_XML(ClientResponse.class, "3");
+        GenericType<Player> genericType = new GenericType<Player>() {
+        };
+        Player player = response.getEntity(genericType);
+        System.out.println("FirstName: " + player.getFirstname());
+        System.out.println(" Jerseyno: " + player.getJerseynumber());
+        System.out.println("LastName: " + player.getLastname());
+        System.out.println("Last Spoken Words: " + player.getLastspokenwords());
+
+//        player.setJerseynumber(101);
+//        player.setLastspokenwords(" I will be retiring soon -updated");
+//        restful.edit_XML(player);
     }
-
-    public String countREST() throws UniformInterfaceException {
-        WebResource resource = webResource;
-        resource = resource.path("count");
-        return resource.accept(MediaType.TEXT_PLAIN).get(String.class);
-    }
-
-    public <T> T findAll_XML(Class<T> responseType) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        return resource.accept(MediaType.APPLICATION_XML).get(responseType);
-    }
-
-    public <T> T findAll_JSON(Class<T> responseType) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        return resource.accept(MediaType.APPLICATION_JSON).get(responseType);
-    }
-
-    public void edit_XML(Object requestEntity) throws UniformInterfaceException {
-        webResource.type(MediaType.APPLICATION_XML).put(requestEntity);
-    }
-
-    public void edit_JSON(Object requestEntity) throws UniformInterfaceException {
-        webResource.type(MediaType.APPLICATION_JSON).put(requestEntity);
-    }
-
-    public void create_XML(Object requestEntity) throws UniformInterfaceException {
-        webResource.type(MediaType.APPLICATION_XML).post(requestEntity);
-    }
-
-    public void create_JSON(Object requestEntity) throws UniformInterfaceException {
-        webResource.type(MediaType.APPLICATION_JSON).post(requestEntity);
-    }
-
-    public <T> T findRange_XML(Class<T> responseType, String from, String to) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        resource = resource.path(MessageFormat.format("{0}/{1}", new Object[]{from, to}));
-        return resource.accept(MediaType.APPLICATION_XML).get(responseType);
-    }
-
-    public <T> T findRange_JSON(Class<T> responseType, String from, String to) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        resource = resource.path(MessageFormat.format("{0}/{1}", new Object[]{from, to}));
-        return resource.accept(MediaType.APPLICATION_JSON).get(responseType);
-    }
-
-    public <T> T find_XML(Class<T> responseType, String id) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        resource = resource.path(MessageFormat.format("{0}", new Object[]{id}));
-        return resource.accept(MediaType.APPLICATION_XML).get(responseType);
-    }
-
-    public <T> T find_JSON(Class<T> responseType, String id) throws UniformInterfaceException {
-        WebResource resource = webResource;
-        resource = resource.path(MessageFormat.format("{0}", new Object[]{id}));
-        return resource.accept(MediaType.APPLICATION_JSON).get(responseType);
-    }
-
-//    public void close() {
-//        client.destroy();
-//    }
 }
