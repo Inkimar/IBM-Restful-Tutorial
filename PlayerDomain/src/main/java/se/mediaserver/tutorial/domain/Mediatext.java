@@ -30,24 +30,24 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mediatext.findByLang", query = "SELECT m FROM Mediatext m WHERE m.lang = :lang"),
     @NamedQuery(name = "Mediatext.findByLegend", query = "SELECT m FROM Mediatext m WHERE m.legend = :legend")})
 public class Mediatext implements Serializable {
+    
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "UUID")
     private Long uuid;
-    @Size(max = 255)
-    @Column(name = "LANG")
-    private String lang;
-    @Size(max = 255)
-    @Column(name = "LEGEND")
+
     private String legend;
+
+    private String lang;
 
     public Mediatext() {
     }
 
-    public Mediatext(Long uuid) {
-        this.uuid = uuid;
+    public Mediatext(String legend, String lang) {
+        this.legend = legend;
+        this.lang = lang;
     }
 
     public Long getUuid() {
@@ -58,20 +58,20 @@ public class Mediatext implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
     public String getLegend() {
         return legend;
     }
 
     public void setLegend(String legend) {
         this.legend = legend;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class Mediatext implements Serializable {
 
     @Override
     public String toString() {
-        return "se.mediaserver.tutorial.mediaweb.imagewebproject.Mediatext[ uuid=" + uuid + " ]";
+        return "se.mediaserver.tutorial.domain.Mediatext[ uuid=" + uuid + " ]";
     }
     
 }
