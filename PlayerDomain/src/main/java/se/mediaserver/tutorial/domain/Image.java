@@ -86,6 +86,6 @@ public class Image implements Serializable {
 
     @Override
     public String toString() {
-        return "se.mediaserver.tutorial.mediaweb.imagewebproject.Image[ uuid=" + uuid + " ]";
+        return "se.mediaserver.tutorial.domain.Image[ uuid=" + uuid + " ]";
     }
 }
