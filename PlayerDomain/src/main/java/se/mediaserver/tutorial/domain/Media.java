@@ -29,14 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "MEDIA")
 @Inheritance(strategy = InheritanceType.JOINED)
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Media.findAll", query = "SELECT m FROM Media m"),
-    @NamedQuery(name = "Media.findByUuid", query = "SELECT m FROM Media m WHERE m.uuid = :uuid"),
-    @NamedQuery(name = "Media.findByDtype", query = "SELECT m FROM Media m WHERE m.dtype = :dtype"),
-    @NamedQuery(name = "Media.findByFilename", query = "SELECT m FROM Media m WHERE m.filename = :filename"),
-    @NamedQuery(name = "Media.findByMimeTye", query = "SELECT m FROM Media m WHERE m.mimeTye = :mimeTye"),
-    @NamedQuery(name = "Media.findByOwner", query = "SELECT m FROM Media m WHERE m.owner = :owner"),
-    @NamedQuery(name = "Media.findByVisibility", query = "SELECT m FROM Media m WHERE m.visibility = :visibility")})
+//@NamedQueries({
+//    @NamedQuery(name = "Media.findAll", query = "SELECT m FROM Media m"),
+//    @NamedQuery(name = "Media.findByUuid", query = "SELECT m FROM Media m WHERE m.uuid = :uuid"),
+//    @NamedQuery(name = "Media.findByDtype", query = "SELECT m FROM Media m WHERE m.dtype = :dtype"),
+//    @NamedQuery(name = "Media.findByFilename", query = "SELECT m FROM Media m WHERE m.filename = :filename"),
+//    @NamedQuery(name = "Media.findByMimeTye", query = "SELECT m FROM Media m WHERE m.mimeTye = :mimeTye"),
+//    @NamedQuery(name = "Media.findByOwner", query = "SELECT m FROM Media m WHERE m.owner = :owner"),
+//    @NamedQuery(name = "Media.findByVisibility", query = "SELECT m FROM Media m WHERE m.visibility = :visibility")})
 public class Media implements Serializable {
 
     @Id

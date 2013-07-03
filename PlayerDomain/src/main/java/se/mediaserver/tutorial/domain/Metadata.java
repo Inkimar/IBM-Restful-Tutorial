@@ -23,9 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "METADATA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Metadata.findAll", query = "SELECT m FROM Metadata m"),
-    @NamedQuery(name = "Metadata.findByUuid", query = "SELECT m FROM Metadata m WHERE m.uuid = :uuid")})
+//@NamedQueries({
+//    @NamedQuery(name = "Metadata.findAll", query = "SELECT m FROM Metadata m"),
+//    @NamedQuery(name = "Metadata.findByUuid", query = "SELECT m FROM Metadata m WHERE m.uuid = :uuid")})
 public class Metadata implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

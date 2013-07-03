@@ -24,11 +24,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "MEDIATEXT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Mediatext.findAll", query = "SELECT m FROM Mediatext m"),
-    @NamedQuery(name = "Mediatext.findByUuid", query = "SELECT m FROM Mediatext m WHERE m.uuid = :uuid"),
-    @NamedQuery(name = "Mediatext.findByLang", query = "SELECT m FROM Mediatext m WHERE m.lang = :lang"),
-    @NamedQuery(name = "Mediatext.findByLegend", query = "SELECT m FROM Mediatext m WHERE m.legend = :legend")})
+//@NamedQueries({
+//    @NamedQuery(name = "Mediatext.findAll", query = "SELECT m FROM Mediatext m"),
+//    @NamedQuery(name = "Mediatext.findByUuid", query = "SELECT m FROM Mediatext m WHERE m.uuid = :uuid"),
+//    @NamedQuery(name = "Mediatext.findByLang", query = "SELECT m FROM Mediatext m WHERE m.lang = :lang"),
+//    @NamedQuery(name = "Mediatext.findByLegend", query = "SELECT m FROM Mediatext m WHERE m.legend = :legend")})
 public class Mediatext implements Serializable {
     
     private static final long serialVersionUID = 1L;

@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "IMAGE")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Image.findAll", query = "SELECT i FROM Image i"),
-    @NamedQuery(name = "Image.findByUuid", query = "SELECT i FROM Image i WHERE i.uuid = :uuid")})
+//@NamedQueries({
+//    @NamedQuery(name = "Image.findAll", query = "SELECT i FROM Image i"),
+//    @NamedQuery(name = "Image.findByUuid", query = "SELECT i FROM Image i WHERE i.uuid = :uuid")})
 public class Image extends Media implements Serializable {
 
     private static final long serialVersionUID = 1L;
