@@ -42,14 +42,14 @@ public class CreatePlayerJerseyClient {
         };
 
         // Returns an ArrayList of Players from the web service
-        List<Player> data = new ArrayList<Player>();
-        data = (response.getEntity(genericType));
+        List<Player> players = new ArrayList<Player>();
+        players = (response.getEntity(genericType));
         System.out.println("Retreiving and Displaying Players Details");
-        for (Player players : data) {
-            System.out.println("FirstName: " + players.getFirstname());
-            System.out.println(" Jerseyno: " + players.getJerseynumber());
-            System.out.println("LastName: " + players.getLastname());
-            System.out.println("Last Spoken Words:" + players.getLastspokenwords());
+        for (Player player : players) {
+            System.out.println("FirstName: " + player.getFirstname());
+            System.out.println(" Jerseyno: " + player.getJerseynumber());
+            System.out.println("LastName: " + player.getLastname());
+            System.out.println("Last Spoken Words:" + player.getLastspokenwords());
         }
     }
     
