@@ -4,6 +4,7 @@
  */
 package se.mediaserver.tutorial.playerclient;
 
+import com.playerentity.Player;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.UniformInterfaceException;
@@ -12,6 +13,7 @@ import java.util.List;
 import se.mediaserver.tutorial.domain.Image;
 import se.mediaserver.tutorial.domain.Media;
 import se.mediaserver.tutorial.util.RestfulImage;
+import se.mediaserver.tutorial.util.RestfulPlayer;
 
 /**
  *
@@ -22,7 +24,9 @@ public class MediaImageManager {
     public static void main(String args[]) throws UniformInterfaceException {
         System.out.println("Running MediaImageManager");
         //createImage();
-        get();
+//        get();
+        update();
+        
     }
 
     private static void createImage() throws UniformInterfaceException {
@@ -38,8 +42,8 @@ public class MediaImageManager {
     }
     
      private static void get() {
-
         RestfulImage restful = new RestfulImage();
+        
         ClientResponse response = restful.findAll_XML(ClientResponse.class);
 
         GenericType<List<Image>> genericType = new GenericType<List<Image>>() {
@@ -54,5 +58,24 @@ public class MediaImageManager {
             System.out.println(" Owner is: " + image.getOwner() );
       
         }
+    }
+     private  static void update() {
+            RestfulImage restful = new RestfulImage();
+
+        ClientResponse response = restful.find_XML(ClientResponse.class, "3");
+       
+
+//        CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
+//        ClientResponse response1 = client1.find_XML(ClientResponse.class, "3");
+        GenericType<Image> genericType = new GenericType<Image>() {
+        };
+        Image image = response.getEntity(genericType);
+        System.out.println("FirstName: " + image.getFilename());
+        image.setOwner("Erlingsson");
+        restful.edit_XML(image);
+
+//        player.setJerseynumber(101);
+//        player.setLastspokenwords(" I will be retiring soon -updated");
+//        restful.edit_XML(player);
     }
 }
