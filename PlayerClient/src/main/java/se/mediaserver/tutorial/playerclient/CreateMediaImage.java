@@ -4,12 +4,10 @@
  */
 package se.mediaserver.tutorial.playerclient;
 
-import com.playerentity.Player;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import se.mediaserver.tutorial.domain.Image;
 import se.mediaserver.tutorial.domain.Media;
 import se.mediaserver.tutorial.util.RestfulImage;
-import se.mediaserver.tutorial.util.RestfulPlayer;
 
 /**
  *
@@ -31,12 +29,5 @@ public class CreateMediaImage {
         media.setVisibility("private");
         System.out.println("Media:Image "+media);
         restful.create_XML(media);
-
-//        Player player = new Player();
-//        player.setFirstname("Sabba");
-//        player.setLastname("Tabba");
-//        player.setJerseynumber(51);
-//        player.setLastspokenwords("varsågod");
-//        restful.create_XML(player);
     }
 }
