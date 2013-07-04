@@ -13,7 +13,7 @@ import se.mediaserver.tutorial.util.RestfulImage;
  *
  * @author ingimar
  */
-public class CreateMediaImage {
+public class MediaImageManager {
 
     public static void main(String args[]) throws UniformInterfaceException {
         createImage();
@@ -23,11 +23,11 @@ public class CreateMediaImage {
         RestfulImage restful = new RestfulImage();
 
         Media media = new Image();
-       
+
         media.setFilename("scorpio.jpg");
         media.setOwner("actus");
         media.setVisibility("private");
-        System.out.println("Media:Image "+media);
+        System.out.println("Media:Image " + media);
         restful.create_XML(media);
     }
 }
