@@ -1,17 +1,13 @@
 package se.mediaserver.tutorial.playerclient;
 
 import com.sun.jersey.api.client.UniformInterfaceException;
-import com.sun.jersey.api.client.WebResource;
-import java.text.MessageFormat;
-import javax.ws.rs.core.MediaType;
 
 import com.playerentity.Player;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 import java.util.ArrayList;
 import java.util.List;
-import se.mediaserver.tutorial.util.Restful;
-import se.mediaserver.tutorial.util.URI;
+import se.mediaserver.tutorial.util.RestfulPlayer;
 
 /**
  * @author ingimar
@@ -19,26 +15,27 @@ import se.mediaserver.tutorial.util.URI;
 public class CreatePlayerJerseyClient {
 
     public static void main(String args[]) throws UniformInterfaceException {
-        //createPlayer();
+        createPlayer();
         //get();
-        update();
+       // update();
 
     }
 
     private static void createPlayer() throws UniformInterfaceException {
-        Restful restful = new Restful();
+        RestfulPlayer restful = new RestfulPlayer();
 
         Player player = new Player();
-        player.setFirstname("Sabba");
-        player.setLastname("Tabba");
+        player.setFirstname("skuli");
+        player.setLastname("gudmunds");
         player.setJerseynumber(51);
         player.setLastspokenwords("varsågod");
         restful.create_XML(player);
+        
     }
 
     private static void get() {
 
-        Restful restful = new Restful();
+        RestfulPlayer restful = new RestfulPlayer();
         ClientResponse response = restful.findAll_XML(ClientResponse.class);
 
         GenericType<List<Player>> genericType = new GenericType<List<Player>>() {
@@ -60,7 +57,7 @@ public class CreatePlayerJerseyClient {
      * 2013-07-03: Får fel här
      */
     private  static void update() {
-        Restful restful = new Restful();
+        RestfulPlayer restful = new RestfulPlayer();
 
         ClientResponse response = restful.find_XML(ClientResponse.class, "faea868e-b7a5-4d03-b323-fbed50621ab3");
         if ( response == null ){

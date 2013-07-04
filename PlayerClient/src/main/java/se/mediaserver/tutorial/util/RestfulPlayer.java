@@ -11,12 +11,12 @@ import com.sun.jersey.api.client.WebResource;
  *
  * @author ingimar
  */
-public class Restful {
+public class RestfulPlayer {
 
     private WebResource webResource;
 
-    public Restful() {
-        webResource = URI.getWebResource();
+    public RestfulPlayer() {
+        webResource = URI.getPlayerWebResource();
     }
 
     public void remove(String id) throws UniformInterfaceException {

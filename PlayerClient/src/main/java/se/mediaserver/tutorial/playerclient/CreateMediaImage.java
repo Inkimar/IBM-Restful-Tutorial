@@ -8,7 +8,8 @@ import com.playerentity.Player;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import se.mediaserver.tutorial.domain.Image;
 import se.mediaserver.tutorial.domain.Media;
-import se.mediaserver.tutorial.util.Restful;
+import se.mediaserver.tutorial.util.RestfulImage;
+import se.mediaserver.tutorial.util.RestfulPlayer;
 
 /**
  *
@@ -21,13 +22,16 @@ public class CreateMediaImage {
     }
 
     private static void createImage() throws UniformInterfaceException {
-        Restful restful = new Restful();
+        RestfulImage restful = new RestfulImage();
 
-         Media media = new Image();
-        media.setFilename("Butterfly.jpg");
-        media.setOwner("Larssons");
+        Media media = new Image();
+       
+        media.setFilename("scorpio.jpg");
+        media.setOwner("actus");
         media.setVisibility("private");
-        
+        System.out.println("Media:Image "+media);
+        restful.create_XML(media);
+
 //        Player player = new Player();
 //        player.setFirstname("Sabba");
 //        player.setLastname("Tabba");
