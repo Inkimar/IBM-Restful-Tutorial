@@ -23,9 +23,9 @@ public class MediaImageManager {
 
     public static void main(String args[]) throws UniformInterfaceException {
         System.out.println("Running MediaImageManager");
-        //createImage();
+        createImage();
 //        get();
-        update();
+//        update();
         
     }
 

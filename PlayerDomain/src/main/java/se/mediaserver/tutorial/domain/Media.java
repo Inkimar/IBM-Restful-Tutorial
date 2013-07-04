@@ -5,6 +5,7 @@
 package se.mediaserver.tutorial.domain;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,31 +40,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 //    @NamedQuery(name = "Media.findByVisibility", query = "SELECT m FROM Media m WHERE m.visibility = :visibility")})
 public class Media implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UUID")
-    private Long uuid;
-
     @Column(name = "OWNER", length = 255, table = "MEDIA")
     private String owner;
 
     @Column(name = "VISIBILITY", length = 50, table = "MEDIA")
     private String visibility;
 
-    @Column(name = "FILENAME", length = 255, table = "MEDIA")
+    @Column(name = "ORIGINAL_FILENAME", length = 255, table = "MEDIA")
     private String filename;
-
+    
+    /**
+     * AS in media_type ( enum ? )
+     */
     @Column(name = "MIME_TYE", length = 50, table = "MEDIA")
     private String mimetype; // anv. Enum
 
 //    @Embedded
 //    private MediaText mediaText;
-    
-    public Long getUuid() {
+    @Id
+    @Column(name = "UUID", length = 36, table = "MEDIA")
+    private String uuid;
+
+    public Media() {
+        this.uuid = UUID.randomUUID().toString();
+    }
+
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
