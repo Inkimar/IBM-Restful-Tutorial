@@ -5,10 +5,12 @@
 package se.mediaserver.tutorial.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -55,8 +57,9 @@ public class Media implements Serializable {
     @Column(name = "MIME_TYE", length = 50, table = "MEDIA")
     private String mimetype; // anv. Enum
 
-//    @Embedded
-//    private MediaText mediaText;
+    @Embedded
+    private Mediatext mediaText;
+    
     @Id
     @Column(name = "UUID", length = 36, table = "MEDIA")
     private String uuid;
@@ -104,6 +107,39 @@ public class Media implements Serializable {
     public void setMimetype(String mimetype) {
         this.mimetype = mimetype;
     }
+
+    public Mediatext getMediaText() {
+        return mediaText;
+    }
+
+    public void setMediaText(Mediatext mediaText) {
+        this.mediaText = mediaText;
+    }
+
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.uuid);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Media other = (Media) obj;
+        if (!Objects.equals(this.uuid, other.uuid)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     @Override
     public String toString() {

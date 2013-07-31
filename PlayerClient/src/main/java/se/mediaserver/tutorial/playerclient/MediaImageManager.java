@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import se.mediaserver.tutorial.domain.Image;
 import se.mediaserver.tutorial.domain.Media;
+import se.mediaserver.tutorial.domain.Mediatext;
 import se.mediaserver.tutorial.util.RestfulImage;
 import se.mediaserver.tutorial.util.RestfulPlayer;
 
@@ -23,10 +24,11 @@ public class MediaImageManager {
 
     public static void main(String args[]) throws UniformInterfaceException {
         System.out.println("Running MediaImageManager");
-        createImage();
+//        createImage();
+        createImageWithMediaText();
 //        get();
 //        update();
-        
+
     }
 
     private static void createImage() throws UniformInterfaceException {
@@ -40,10 +42,24 @@ public class MediaImageManager {
         System.out.println("Media:Image " + media);
         restful.create_XML(media);
     }
-    
-     private static void get() {
+
+    private static void createImageWithMediaText() throws UniformInterfaceException {
         RestfulImage restful = new RestfulImage();
-        
+
+        Media media = new Image();
+
+        media.setFilename("scorpio.jpg");
+        media.setOwner("actus");
+        media.setVisibility("private");
+        Mediatext meditext = new Mediatext("a yellow buttreyfly", "sv_SE");
+        media.setMediaText(meditext);
+        System.out.println("Media:Image " + media);
+        restful.create_XML(media);
+    }
+
+    private static void get() {
+        RestfulImage restful = new RestfulImage();
+
         ClientResponse response = restful.findAll_XML(ClientResponse.class);
 
         GenericType<List<Image>> genericType = new GenericType<List<Image>>() {
@@ -54,16 +70,17 @@ public class MediaImageManager {
         images = (response.getEntity(genericType));
         System.out.println("Retreiving and Displaying Players Details");
         for (Image image : images) {
-            System.out.println("Filename: " + image.getFilename() );
-            System.out.println(" Owner is: " + image.getOwner() );
-      
+            System.out.println("Filename: " + image.getFilename());
+            System.out.println(" Owner is: " + image.getOwner());
+
         }
     }
-     private  static void update() {
-            RestfulImage restful = new RestfulImage();
+
+    private static void update() {
+        RestfulImage restful = new RestfulImage();
 
         ClientResponse response = restful.find_XML(ClientResponse.class, "3");
-       
+
 
 //        CreatePlayerJerseyClient client1 = new CreatePlayerJerseyClient();
 //        ClientResponse response1 = client1.find_XML(ClientResponse.class, "3");
