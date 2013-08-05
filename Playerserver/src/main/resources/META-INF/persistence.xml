@@ -9,10 +9,10 @@
     <jta-data-source>jdbc/__mysqlIbmTutorial</jta-data-source>
     <class>com.playerentity.Player</class>
     <class>com.playerentity.Team</class>
-    <class>se.mediaserver.tutorial.domain.Image</class>
+<!--    <class>se.mediaserver.tutorial.domain.Image</class>
     <class>se.mediaserver.tutorial.domain.Media</class>
     <class>se.mediaserver.tutorial.domain.Mediatext</class>
-    <class>se.mediaserver.tutorial.domain.Metadata</class>
+    <class>se.mediaserver.tutorial.domain.Metadata</class>-->
     
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
